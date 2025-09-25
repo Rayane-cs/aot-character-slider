@@ -242,6 +242,19 @@ img {
 
 /* Mobile */
 @media (max-width: 768px) {
+    .mikasa {
+        background-image: rgba(0, 0, 0, 0.288),url(photos/mikasa_p.jpg);
+    }
+    .eren{
+        background-image: rgba(0, 0, 0, 0.288),url(photos/eren_p.jpg);
+    }
+    .armin {
+        background-image: rgba(0, 0, 0, 0.288),url(photos/armin_p.jpg);
+    }
+    .levi{
+        background-image: rgba(0, 0, 0, 0.288),url(photos/levi_p.jpg);
+        background-position: center;
+    }
     header {
         flex-direction: column;
         gap: 10px;
