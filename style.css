@@ -8,10 +8,11 @@
     font-style: normal;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 a {
-    color: azure;
+    color: black;
     text-decoration: none;
 }
 
@@ -20,7 +21,6 @@ body {
     display: flex; 
     justify-content: center;
     align-items: center;
-    margin: 0;
     position: relative;
     overflow: hidden;
 }
@@ -38,52 +38,54 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
     position: absolute;
     width: 100%;
-    height: 50px;
-    overflow: hidden;
     z-index: 10;
+    padding: 5px 0;
+    box-shadow: 0 -10px 30px black;
+    top: 0;
 }
 
 header::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.14);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     z-index: -1;
 }
 
-.logo {
-    font-size: 40px;
-    text-transform: uppercase;
-    font-style: italic;
+ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 20px;
+}
+
+li a {
+    text-decoration: none;
+    font-weight: 500;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+li a:hover {
+    color: #ddd;
 }
 
 /* Container */
 .container {
-    width: 95%;
-    height: 600px;
+    width: 100%;
+    height: 100vh;
     transition: all 0.5s ease;
     background-color: transparent;
+    z-index: 1;
     position: relative;
-    background-color: rgb(126, 126, 126);
 }
 
-.container:hover {
-    transform: scale(1.008);
-}
-
-/* Content Wrapper */
-.content-wrapper {
-    position: relative;
+img {
     width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    height: 60px;
+    z-index: -10;
 }
 
 /* Generic content */
@@ -92,6 +94,7 @@ header::before {
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
     color: white;
+    text-align: center;
 }
 
 .content.active {
@@ -102,77 +105,84 @@ header::before {
 /* Shared content box style */
 .content-mikasa,
 .content-eren,
-.content-armin {
-    width: 40%;
+.content-armin,
+.content-levi {
+    width: 50%;
+    display: block;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    padding: 20px;
+    padding: 10px;
 }
 
-.content-mikasa { left: 70%; }
+.content-mikasa { left: 73%; }
 .content-eren   { left: 30%; }
 .content-armin  { left: 73%; }
+.content-levi   { left: 73%; }
 
 .content h2 {
-    text-align: center;
-    font-size: 100px;
+    font-size: 65px;
     text-transform: uppercase;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
 }
 
 .content p {
-    width: 100%;
-    text-align: center;
-    letter-spacing: 1px;
-    font-size: 14px;
+    display: block;
+    max-width: 75%;
+    margin: 10px auto 0;
+    font-size: 16px;
     line-height: 25px;
-    margin: 10px 0;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
 }
 
 /* Background images for active slides */
-.active {
+.mikasa {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.45) 30%, black 70%), url(photos/mikasa.jpg);
-    background-position: center;
+    background-position: center right;
     background-size: cover;
     width: 100%;
     height: 100%;
     transition: all 0.5s ease;
 }
-
-.active:hover {
-    transform: scale(1.008);
+.mikasa:hover {
     background-image: linear-gradient(to right, transparent 30%, black 70%), url(photos/mikasa.jpg);
 }
 
 .eren {
     background-image: linear-gradient(to left, rgba(0,0,0,0.45) 10%, rgba(0,0,0,0.9) 60%), url(photos/eren.jpg);
-    background-position: center;
+    background-position: center left;
     background-size: cover;
     width: 100%;
     height: 100%;
     transition: all 0.5s ease;
 }
-
 .eren:hover {
-    transform: scale(1.008);
     background-image: linear-gradient(to left, transparent 10%, rgba(0,0,0,0.9) 60%), url(photos/eren.jpg);
 }
 
 .armin {
     background-image: linear-gradient(to right, rgba(0,0,0,0.589) 25%, black), url(photos/armin.jpg);
-    background-position: center;
+    background-position: center right;
     background-size: cover;
     width: 100%;
     height: 100%;
     transition: all 0.5s ease;
 }
-
 .armin:hover {
-    transform: scale(1.008);
     background-image: linear-gradient(to right, transparent 25%, black), url(photos/armin.jpg);
+}
+
+.levi {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.45) 30%, black 70%), url(photos/levi2.png);
+    background-position: center right;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease;
+}
+.levi:hover {
+    background-image: linear-gradient(to right, transparent 30%, black 70%), url(photos/levi2.png);
 }
 
 /* Arrows */
@@ -184,17 +194,12 @@ header::before {
     color: white;
     background: transparent;
     border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
     cursor: pointer;
     z-index: 2;
 }
-
 .arrow:hover {
     color: rgba(255, 255, 255, 0.425);
 }
-
 .arrow.left { left: 20px; }
 .arrow.right { right: 20px; }
 
@@ -204,18 +209,67 @@ header::before {
     overflow: hidden;
     display: inline-block;
 }
-@keyframes blink {
-    0%, 100% { border-color: white; }
-    50% { border-color: transparent; }
-}
 .typing::after {
     content: '|';
     display: inline-block;
     margin-left: 2px;
     animation: blink 1s infinite;
 }
-
 @keyframes blink {
     0%, 50%, 100% { opacity: 1; }
     25%, 75% { opacity: 0; }
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .content h2 {
+        font-size: 45px;
+    }
+    .content p {
+        font-size: 14px;
+        line-height: 22px;
+        max-width: 85%;
+    }
+    .content-mikasa,
+    .content-eren,
+    .content-armin,
+    .content-levi {
+        width: 70%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .content h2 {
+        font-size: 30px;
+    }
+    .content p {
+        font-size: 12px;
+        line-height: 20px;
+        max-width: 90%;
+    }
+    .content-mikasa,
+    .content-eren,
+    .content-armin,
+    .content-levi {
+        width: 90%;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%, -50%);
+    }
+    .arrow {
+        font-size: 35px;
+        width: 40px;
+        height: 40px;
+    }
 }
